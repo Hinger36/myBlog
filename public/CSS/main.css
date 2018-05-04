@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+	padding: 0;
+}
+body {
+	font: 12px Arial,"PingFang SC","Hiragino Sans GB",STHeiti,"Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+@font-face {
+  font-family: 'iconfont';  /* project id 646885 */
+  src: url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.eot');
+  src: url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.woff') format('woff'),
+  url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.svg#iconfont') format('svg');
+}
+.hide {
+	display: none;
+}
+.iconfont {
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.site-header {
+	background: url('../images/BrowserPreview_tmp.jpg') no-repeat;
+	background-size: cover; 
+	height: 300px;
+	box-shadow: 0 4px 4px #8f8f8f;
+}
+.site-header-wrapper {
+	margin: 0 auto;
+	width: 1200px;
+	padding: 10px 20px;
+}
+.site-header .user {
+	float: right;
+	font-size: 26px;
+	color: #ccc;
+	cursor: pointer;
+}
+.site-header .log {
+	padding: 10px;
+	margin-top: 180px;
+	display: inline-block;
+	font-size: 48px;
+	font-family: 'Arial';
+	color: #fff;
+}
+body {
+	background: #fefefe;
+	height: 2000px;
+}
+.wrapper {
+	margin: 0 auto;
+	width: 1200px;
+}
+.wrapper .login {
+	position: fixed;
+	margin: auto;
+	left: 50%;
+	/*right: 0;*/
+	top: 50%;
+	/*bottom: 0;*/
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	
+	width: 400px;
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 0 8px 5px #ccc;
+}
+.wrapper .login-title {
+	height: 150px;
+	background-color: #10182b;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+
+}
+.wrapper .login-title .quit {
+	color: #fff;
+	font-size: 24px;
+	float: right;
+	cursor: pointer;
+	padding: 5px;
+}
+.wrapper .login-title h1 {
+	color: #fff;
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 150px;
+	text-align: center;
+}
+.wrapper .login-in {
+	width: 300px;
+	margin: 40px auto;
+	text-align: center;
+
+
+}
+.wrapper .login-in input {
+	height: 28px;
+	width: 280px;
+	padding: 5px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border-style: none;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	/*font-family: Arial,"黑体";*/
+}
+.wrapper .login-in input:focus {
+	outline: none;
+    box-shadow: 0 0 2px #347dfa;
+}
+.wrapper .login-in .Sign {
+	width: 292px;
+	height: 40px;
+	background-color: #10182b;
+	color: #fff;
+	font-size: 18px;
+	padding: 5px;
+ 	border-style: none;
+ 	border-radius: 5px;
+ 	margin-bottom: 10px;
+}
+.wrapper .login-in .Register {
+	color: #959595;
+	font-size: 16px;
+	float: right;
+	padding: 0 10px;
+}
+.wrapper .login-in .Register:hover {
+	color: #555;
+	
+}
+
+/* 文章 */
+.wrapper .contents {
+	height: 300px;
+	margin-top: 30px;
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	box-shadow: 0 4px 4px #8f8f8f;
+}
+.wrapper .contents p {
+	font-size: 15px;
+	line-height: 1.6;
+	color: #222;
+}
