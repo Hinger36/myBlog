@@ -34,6 +34,28 @@
 				//通过params()将名值对转换成字符串
 				obj.data = this.formatParams(obj.data);
 
+				var callback = function () {
+	            	if(xhr.status === 200) {
+	            		obj.success(xhr.responseText);
+	            	} else {
+	            		alert('获取数据错误！错误代号：' + xhr.status + '，错误信息：' + xhr.statusText);
+	            	}
+				};
+				
+				//在使用XHR对象时，必须先调用open()方法，  
+	            //它接受三个参数：请求类型(get、post)、请求的URL和表示是否异步。
+	            xhr.open(obj.type, obj.url, obj.async);
+	            if (obj.type === 'post') {
+	            	//post方式需要自己设置http的请求头，来模仿表单提交。  
+	                //放在open方法之后，send方法之前。
+	                xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+	                //post方式将数据放在send()方法里
+					xhr.send(obj.data);
+					
+	            } else {
+	            	//get方式则填null  
+	            	xhr.send(null);
+				}
 				if (obj.type === 'get') {
 					obj.url += obj.url.indexOf('?') == -1 ? '?' + obj.data: '&' + obj.data;
 				}
@@ -47,35 +69,16 @@
 						 * 3: 请求处理中
 						 * 4: 请求已完成，且响应已就绪
 						 */
-						if (obj.readyState === 4) {
+						if (xhr.readyState === 4) {
 							callback();
 						}
 					};
 				}
-				//在使用XHR对象时，必须先调用open()方法，  
-	            //它接受三个参数：请求类型(get、post)、请求的URL和表示是否异步。
-	            xhr.open(obj.type, obj.url, obj.async);
-	            if (obj.type === 'post') {
-	            	//post方式需要自己设置http的请求头，来模仿表单提交。  
-	                //放在open方法之后，send方法之前。
-	                xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-	                //post方式将数据放在send()方法里
-	                xhr.send(obj.data);
-	            } else {
-	            	//get方式则填null  
-	            	xhr.send(null);
-	            }
 	            if (obj.async === false) {
 	            	callback();
 	            }
 
-	            var callback = function () {
-	            	if(xhr.status === 200) {
-	            		obj.success(xhr.responseText);
-	            	} else {
-	            		alert('获取数据错误！错误代号：' + xhr.status + '，错误信息：' + xhr.statusText);
-	            	}
-	            };
+	            
 			} else if (obj.dataType === 'jsonp') {
 				var Head = document.getElementsByTagName('head')[0];
 				var Script = document.createElement('script');
@@ -131,7 +134,7 @@
 	function userReq() {
 		var login = document.getElementById('idlogin');
 		var reglogin = document.getElementById('idreglogin');
-		
+		//注册
 		addEvent(reglogin.getElementsByTagName('button')[0], 'click', function () {
 			//通过ajax提交请求
 			my.ajax({
@@ -145,12 +148,39 @@
 				async: true,
 				dataType: 'json',
 				success: function (result) {
-					console.log('result');
+					let info = document.getElementById('sign-up-info');
+					let Result = JSON.parse(result);
+					info.innerHTML = Result.message;
+					setTimeout(function () {
+						info.innerHTML = '';
+					},2000);
 				}
 			});
 			
 		})
-		
+		//登录
+		addEvent(login.getElementsByTagName('button')[0], 'click', function () {
+			//通过ajax提交请求
+			my.ajax({
+				type: 'post',
+				url: 'api/user/login',
+				data: {
+					username: login.getElementsByTagName('input')[0].value,
+					password: login.getElementsByTagName('input')[1].value,
+				},
+				async: true,
+				dataType: 'json',
+				success: function (result) {
+					let info = document.getElementById('sign-in-info');
+					let Result = JSON.parse(result);
+					info.innerHTML = Result.message;
+					setTimeout(function () {
+						info.innerHTML = '';
+					},2000);
+				}
+			});
+			
+		})
 
 
 	}

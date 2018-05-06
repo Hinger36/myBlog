@@ -141,6 +141,12 @@ body {
 	color: #555;
 	
 }
+#sign-in-info,
+#sign-up-info {
+	color: red;
+	text-align: left;
+	text-indent: 5px;
+}
 
 /* 文章 */
 .wrapper .contents {
