@@ -2,7 +2,7 @@
  * @Author: Hinger36 
  * @Date: 2018-05-05 01:46:28 
  * @Last Modified by: Hinger36
- * @Last Modified time: 2018-05-06 16:47:58
+ * @Last Modified time: 2018-05-06 17:03:55
  */
 const express = require('express');
 const router = express.Router();
@@ -52,6 +52,7 @@ router.post('/user/register', function (req, res) {
             password: password
         });
         user.save();
+        responseData.code = 0;
         responseData.message = '注册成功';
         res.json(responseData);
     });
@@ -60,7 +61,6 @@ router.post('/user/register', function (req, res) {
 router.post('/user/login', function (req, res) {
     let username = req.body.username;
     let password = req.body.password;
-    console.log(username)
     //用户输入是否为空
     if (!username) {
         responseData.code = 1;
@@ -78,21 +78,18 @@ router.post('/user/login', function (req, res) {
         username: username,
         password: password
     }).then(function (info) {
-        if (info) {
+        if (!info) {
             responseData.code = 3;
             responseData.message = '用户名或密码错误';
             res.json(responseData);
             return;
         }
-        
+        responseData.code = 0;
         responseData.message = '登录成功';
 	 	res.json(responseData);
     });
    
 });
 
-router.get('/', function (req, res, next) {
-    res.send('<h1>hahahahahahaahahahahah</h1>')
-})
 
 module.exports = router;

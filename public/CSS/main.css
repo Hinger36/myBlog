@@ -146,6 +146,7 @@ body {
 	color: red;
 	text-align: left;
 	text-indent: 5px;
+	min-height: 15px;
 }
 
 /* 文章 */
