@@ -11,13 +11,21 @@ a {
 ul {
 	list-style: none;
 }
+.clearfix:after {
+	content: '';
+	clear: both;
+	display: table;
+}
+.clearfix {
+	zoom: 1;
+}
 @font-face {
-  font-family: 'iconfont';  /* project id 646885 */
-  src: url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.eot');
-  src: url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.woff') format('woff'),
-  url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_646885_wigregzwk1d78pvi.svg#iconfont') format('svg');
+	font-family: 'iconfont';  /* project id 646885 */
+	src: url('//at.alicdn.com/t/font_646885_hn3y3s6b5g17cik9.eot');
+	src: url('//at.alicdn.com/t/font_646885_hn3y3s6b5g17cik9.eot?#iefix') format('embedded-opentype'),
+	url('//at.alicdn.com/t/font_646885_hn3y3s6b5g17cik9.woff') format('woff'),
+	url('//at.alicdn.com/t/font_646885_hn3y3s6b5g17cik9.ttf') format('truetype'),
+	url('//at.alicdn.com/t/font_646885_hn3y3s6b5g17cik9.svg#iconfont') format('svg');
 }
 .hide {
 	display: none;
@@ -36,9 +44,16 @@ ul {
 	box-shadow: 0 4px 4px #8f8f8f;
 }
 .site-header-wrapper {
+	position: relative;
 	margin: 0 auto;
-	width: 1200px;
+	max-width: 1200px;
 	padding: 10px 20px;
+}
+.header-nav {
+	height: 48px;
+}
+.header-nav-icon {
+	line-height: 48px;
 }
 .site-header .user {
 	float: right;
@@ -46,6 +61,29 @@ ul {
 	color: #ccc;
 	cursor: pointer;
 }
+.site-header .InUser {
+	float: right;
+	font-size: 26px;
+	color: #ccc;
+	cursor: pointer;
+}
+.site-header .InUser .User-box {
+	display: none;
+	width: 60px;
+	position: absolute;
+	right: 0;
+	left: auto;
+	font-size: 14px;
+	border: 0.5px solid #fff;
+	line-height: 1.5em;
+}
+.site-header .InUser .User-box li {
+	padding: 6px 10px;
+}
+.User-box a {
+	color: #fff;
+}
+
 .site-header .log {
 	padding: 10px;
 	margin-top: 180px;
@@ -60,7 +98,7 @@ body {
 }
 .wrapper {
 	margin: 0 auto;
-	width: 1200px;
+	max-width: 1200px;
 }
 .wrapper .login {
 	position: fixed;
@@ -151,7 +189,7 @@ body {
 
 /* 文章 */
 .wrapper .contents {
-	height: 300px;
+	/* height: 300px; */
 	margin-top: 30px;
 	padding: 10px 15px;
 	border: 1px solid #ccc;

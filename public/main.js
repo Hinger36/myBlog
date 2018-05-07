@@ -113,10 +113,13 @@
 		var user = document.getElementsByClassName('user')
 		var quit = document.getElementsByClassName('quit');
 		var Register = document.getElementsByClassName('Register');
+		let InUser = document.getElementsByClassName('InUser')[0];
+		let UserBox = document.getElementsByClassName('User-box')[0];
+		
 		for (let i = 0; i < quit.length; i++) {
 			addEvent(quit[i], 'click', function () {
 				login[i].style.display = 'none';
-			}, false);
+			});
 			addEvent(Register[i], 'click', function () {
 				login[i].style.display = 'none'
 				if (i === 0) {
@@ -124,16 +127,36 @@
 				} else {
 					login[0].style.display = 'block'
 				}			
-			}, false);
+			});
 		}		
 		addEvent(user[0], 'click', function () {
 			login[0].style.display = 'block';
-		}, false);
+		});
+		//change user icon
+		changeIcon(InUser, UserBox);
+		
 	}
+	/**
+	 * 当鼠标移动到父元素是显示子元素
+	 * @param {父元素} ele 
+	 * @param {子元素} subEle 
+	 */
+	function changeIcon(ele, subEle) {
+		
+		
+		addEvent(ele, 'mouseover', function () {	
+			subEle.style.display = 'block';
+		});
+		addEvent(ele, 'mouseout', function () {
+			subEle.style.display = 'none';			
+		})
+	}
+
 	//ajax表单提交
 	function userReq() {
-		var login = document.getElementById('idlogin');
-		var reglogin = document.getElementById('idreglogin');
+		let login = document.getElementById('idlogin');
+		let reglogin = document.getElementById('idreglogin');
+		
 		//注册
 		addEvent(reglogin.getElementsByTagName('button')[0], 'click', function () {
 			//通过ajax提交请求
@@ -177,6 +200,17 @@
 					setTimeout(function () {
 						info.innerHTML = '';
 					},2000);
+					//登录成功
+					if (Result.code === 0) {
+					//登录图标切换
+						let user = document.getElementsByClassName('user')[0];
+						let InUser = document.getElementsByClassName('InUser')[0];
+						user.style.display = 'none';
+						InUser.style.display = 'list-item';
+						login.style.display = 'none';
+						
+					}
+
 				}
 			});
 			
@@ -184,8 +218,23 @@
 
 
 	}
-	userReq()
+	var hideUer = function () {
+		let User = document.getElementsByClassName('user')[0];
+		let InUser = document.getElementsByClassName('InUser')[0];
+		let cid = User.getAttribute('data-value-cid');
+		if (cid) {
+			User.style.display = 'none';
+			InUser.style.display = 'list-item';
+		} else {
+			User.style.display = '';
+			InUser.style.display = '';
+		}
+	}
+
 	login ();
+	userReq();
+	hideUer();
+	
 	
 	
 

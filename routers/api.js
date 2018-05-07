@@ -2,7 +2,7 @@
  * @Author: Hinger36 
  * @Date: 2018-05-05 01:46:28 
  * @Last Modified by: Hinger36
- * @Last Modified time: 2018-05-06 17:03:55
+ * @Last Modified time: 2018-05-08 00:52:06
  */
 const express = require('express');
 const router = express.Router();
@@ -86,10 +86,22 @@ router.post('/user/login', function (req, res) {
         }
         responseData.code = 0;
         responseData.message = '登录成功';
-	 	res.json(responseData);
+        responseData.userInfo = {
+            _id: info.id,
+            username: info.username
+        }
+        req.cookies.set('userInfo', JSON.stringify(
+            responseData.userInfo
+        ));
+        res.json(responseData); 
+        
     });
    
 });
-
+//退出
+router.get('/user/signout', function (req, res) {
+    req.cookies.set('userInfo', null);
+    res.redirect(302, '/');
+})
 
 module.exports = router;

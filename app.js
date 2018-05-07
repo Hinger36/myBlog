@@ -2,7 +2,7 @@
  * @Author: Hinger36 
  * @Date: 2018-05-05 01:52:52 
  * @Last Modified by: Hinger36
- * @Last Modified time: 2018-05-05 20:28:38
+ * @Last Modified time: 2018-05-08 00:26:31
  */
 //加载express模块
 const express = require('express');
@@ -10,6 +10,7 @@ const express = require('express');
 const swig = require('swig');
 //加载body-parser模块，他是一个HTTP请求体解析中间件
 const bodyParser = require('body-parser');
+const Cookies = require('cookies');
 const mongoose = require('mongoose');
 //创建app应用
 const app = express();
@@ -26,6 +27,19 @@ app.set('view engine', 'html');
 app.use('/public', express.static(__dirname + '/public'));
 //HTTP请求解析中间件,解析application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(function (req, res, next) {
+    req.cookies = new Cookies(req, res);
+    //解析登录用户的cookies信息
+    req.userInfo = {};
+    if (req.cookies.get('userInfo')) {
+        try {
+            req.userInfo = JSON.parse(req.cookies.get('userInfo'));
+        } catch(e) {}
+    }
+    
+    next();
+});
+
 //路由
 app.use('/', require('./routers/main'));
 app.use('/user', require('./routers/admin'));
