@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Life</title>
-	<link rel="stylesheet" type="text/css" href="./public/CSS/main.css">
+	<link rel="stylesheet" type="text/css" href="/public/CSS/main.css">
 </head>
 <body>
 	<div class="site-header">
@@ -12,13 +12,21 @@
 				<ul class="header-nav-icon clearfix">
 					
 					<li class="user iconfont " data-value-cid="{{ userInfo._id }}">&#xe603;</li>
-					
+					{% if userInfo.isAdmin %}
 					<li class="InUser iconfont hide">&#xe60a;
 						<ul class="User-box">
-							<li><a href="">设置</a></li>
+							<li><a href="admin">管理</a></li>
 							<li><a href="api/user/signout">退出</a></li>
 						</ul>
 					</li>
+					{%  else %}
+					<li class="InUser iconfont hide">&#xe60a;
+						<ul class="User-box">
+							
+							<li><a href="api/user/signout">退出</a></li>
+						</ul>
+					</li>
+					{% endif %}
 				
 					
 				</ul>
@@ -84,7 +92,7 @@
 		
 	</div>
 	<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-	<script src="./public/main.js"></script>
+	<script src="./public/js/main.js"></script>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
  * @Author: Hinger36 
  * @Date: 2018-05-05 01:52:52 
  * @Last Modified by: Hinger36
- * @Last Modified time: 2018-05-08 00:26:31
+ * @Last Modified time: 2018-05-09 16:40:29
  */
 //加载express模块
 const express = require('express');
@@ -12,6 +12,7 @@ const swig = require('swig');
 const bodyParser = require('body-parser');
 const Cookies = require('cookies');
 const mongoose = require('mongoose');
+const User = require('./models/User');
 //创建app应用
 const app = express();
 
@@ -34,15 +35,26 @@ app.use(function (req, res, next) {
     if (req.cookies.get('userInfo')) {
         try {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'));
-        } catch(e) {}
+            //获取当前 登录用户的类型 
+            User.findById(req.userInfo._id).then(function (userInfo) {
+                req.userInfo.isAdmin = Boolean( userInfo.isAdmin );
+               
+                next();
+            })
+            // User.findById(req.userInfo._id, function (err, userInfo) {
+            //     req.userInfo.isAdmin = userInfo.isAdmin;
+            //     console.log(req.userInfo.isAdmin);
+            // })
+        } catch(e) {next();}
+    } else {
+        next();
     }
     
-    next();
 });
 
 //路由
 app.use('/', require('./routers/main'));
-app.use('/user', require('./routers/admin'));
+app.use('/admin', require('./routers/admin'));
 app.use('/api', require('./routers/api'));
 
 
