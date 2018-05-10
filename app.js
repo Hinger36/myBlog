@@ -2,7 +2,7 @@
  * @Author: Hinger36 
  * @Date: 2018-05-05 01:52:52 
  * @Last Modified by: Hinger36
- * @Last Modified time: 2018-05-09 16:40:29
+ * @Last Modified time: 2018-05-10 23:40:41
  */
 //加载express模块
 const express = require('express');
@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'));
             //获取当前 登录用户的类型 
             User.findById(req.userInfo._id).then(function (userInfo) {
-                req.userInfo.isAdmin = Boolean( userInfo.isAdmin );
+                req.userInfo.isAdmin = userInfo.isAdmin;
                
                 next();
             })
