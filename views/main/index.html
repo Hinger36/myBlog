@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Life</title>
+	<link rel="stylesheet" type="text/css" href="/public/CSS/main.css">
+</head>
+<body>
+	<div class="site-header">
+		<div class="site-header-wrapper">
+			<div class="header-nav clearfix">
+					<ul class="header-nav-list ">
+						<li><a href="/" class="focus">首页</a></li>
+						{% for category in categories %}
+						<li><a href="">{{ category.name }}</a></li>
+						{% endfor %}
+							
+						
+							
+					</ul>
+				<ul class="header-nav-icon ">
+					
+					<li class="user iconfont " data-value-cid="{{ userInfo._id }}">&#xe603;</li>
+					{% if userInfo.isAdmin %}
+					<li class="InUser iconfont hide">&#xe60a;
+						<ul class="User-box">
+							<li><a href="admin">管理</a></li>
+							<li><a href="api/user/signout">退出</a></li>
+						</ul>
+					</li>
+					{%  else %}
+					<li class="InUser iconfont hide">&#xe60a;
+						<ul class="User-box">
+							
+							<li><a href="api/user/signout">退出</a></li>
+						</ul>
+					</li>
+					{% endif %}
+				
+					
+				</ul>
+			</div>
+			<h1 class="log">Life</h1>
+		</div>
+	</div>
+	<div>
+		<div class="wrapper">
+			<!-- 登录窗口 -->
+			
+			<div class="login hide" id="idlogin">
+				<div class="login-title">
+					<span class="quit iconfont">&#xe623;</span>
+					<h1>Life</h1>
+				</div>
+				<div class="login-in">
+					<!-- <form action="#" id="form1" method="post"> -->
+						<p id="sign-in-info"></p>
+						<input class="user-name" type="text" name="username" placeholder="帐号">
+						<input class="pass-word" type="password" name="password" placeholder="密码">
+						<button class="Sign" type="submit">登 录</button>
+						<a class="Register" href="javascript:;">注册</a>
+					<!-- </form> -->
+				</div>				
+			</div>
+			<!-- 注册窗口 -->
+			<div class="login regsign hide" id="idreglogin">
+				<div class="login-title regsign-title">
+					<span class="quit iconfont">&#xe623;</span>
+					<h1>Life</h1>
+				</div>
+				<div class="login-in">
+					<!-- <form action="#" id="form2" method="POST"> -->
+						<p id="sign-up-info"></p>
+						<input class="user-name" type="text" name="username" placeholder="帐号">
+						<input class="pass-word" type="password" name="password" placeholder="密码">
+						<input class="repass-word" type="password" name="repassword" placeholder="确认密码">
+						<button class="Sign" type="submit">注 册</button>
+						<a class="Register" href="javascript:;">登录</a>
+					<!-- </form> -->
+				</div>
+				
+			</div>
+			
+            
+            <div class="contents">	
+				{% for content in contents %}
+				<a class="article_item" href="/views?page={{content.id}}">
+					<h3>{{content.title}}</h3>
+					<div class="article_main">
+						<p class="article_content ellipsis_4">{% autoescape false %}{{ content.content}}{% endautoescape %}</p>
+					</div>
+					<div class="article_tag">
+						<span>{{content.category.name}}</span>
+						<i>{{content.addTime | date('Y-m-d', -8*60)}}</i>
+					</div>
+				</a>
+				{% endfor %}
+			</div>
+		</div>
+		
+	</div>
+	<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="./public/js/main.js"></script>
+
+</body>
+</html>
