@@ -1,0 +1,49 @@
+.detail_main p, {    
+    font-size: 16px;
+}
+
+.detail_main h1,
+.detail_main h2,
+.detail_main h3,
+.detail_main h4,
+.detail_main h5,
+.detail_main h6,
+.detail_main p {
+    color: #333;
+    line-height: 2;
+}
+.detail_main h1 {
+    font-size: 28px;
+}
+.detail_main h2 {
+    font-size: 26px;
+}
+.detail_main h3 {
+    font-size: 24px;
+}
+.detail_main h4 {
+    font-size: 22px;
+}
+.detail_main h5 {
+    font-size: 20px;
+}
+.detail_main h6 {
+    font-size: 18px;
+}
+.detail_tag {
+    color: #888 !important;
+    font-size: 12px !important;
+}
+.detail_main code {
+    display: inline-block;
+    background-color: #eee;
+}
+.detail_main ul {
+    font-size: 14px;
+    line-height: 28px;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.detail_main img {
+    width: 100%;
+}

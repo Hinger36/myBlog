@@ -2,7 +2,7 @@
  * @Author: Hinger36 
  * @Date: 2018-05-05 01:52:16 
  * @Last Modified by: Hinger36
- * @Last Modified time: 2018-05-10 18:04:52
+ * @Last Modified time: 2018-05-10 21:13:40
  */
 const express = require('express');
 const router = express.Router();
@@ -16,7 +16,7 @@ router.get('/',(req,res,next)=>{
         categoryType: req.query.type || '',
         count: 0,
         page: Number(req.query.page || 1),
-        limit: 2,
+        limit: 6,
         skip: 0,
         pages: 0,
         userInfo: req.userInfo,
@@ -36,9 +36,6 @@ router.get('/',(req,res,next)=>{
         data.skip = (data.page-1)*data.limit;
         return Content.where( where ).find().sort({addTime: -1}).limit( data.limit ).skip( data.skip ).populate( ['category','user'] );
     }).then((contents)=>{
-        contents.forEach((ele, index, Arr) => {
-            ele.content = markDown.toHTML(ele.content);
-        });
         data.contents = contents;
         res.render('main/index',data);
     }).catch(()=>{});  
@@ -46,12 +43,15 @@ router.get('/',(req,res,next)=>{
 
 router.get('/views',(req, res, next)=>{
     const _id = req.query.page;
+    //console.log(_id);
     Content.findOne({_id}).then((content)=>{
         content.view++;
         content.save();
+        let post = markDown.toHTML(content.content);
         res.render('main/detail',{
             userInfo: req.userInfo,
-            content
+            content,
+            post
         });
     })
     
