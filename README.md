@@ -45,7 +45,7 @@ express
 ![文章页](static/readmeIM/2018-05-13 22-57-29.png)
 
 * 后台界面
-![后台界面](static/readmeIM/2018-05-13 22-58-41.png)
+![后台界面](https://github.com/Hinger36/myBlog/blob/master/static/readmeIM/2018-05-13 22-58-41.png)
 
 
 ## License
