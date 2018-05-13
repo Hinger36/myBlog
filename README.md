@@ -42,10 +42,10 @@ express
 ![首页](https://raw.githubusercontent.com/Hinger36/myBlog/ed2ce6df7a761074dfe9f00a5fb8ea3cee4acf60/static/readmeIM/2018-05-13%2022-56-26.png)
 
 * 文章页
-![文章页](static/readmeIM/2018-05-13 22-57-29.png)
+![文章页](https://raw.githubusercontent.com/Hinger36/myBlog/master/static/readmeIM/2018-05-13%2022-57-29.png)
 
 * 后台界面
-![后台界面](https://github.com/Hinger36/myBlog/blob/master/static/readmeIM/2018-05-13 22-58-41.png)
+![后台界面](https://raw.githubusercontent.com/Hinger36/myBlog/master/static/readmeIM/2018-05-13%2022-58-41.png)
 
 
 ## License
