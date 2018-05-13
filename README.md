@@ -39,7 +39,7 @@ express
 ## 页面效果
 
 * 首页
-![首页](static/readmeIM/2018-05-13 22-56-26.png)
+![首页](https://raw.githubusercontent.com/Hinger36/myBlog/ed2ce6df7a761074dfe9f00a5fb8ea3cee4acf60/static/readmeIM/2018-05-13%2022-56-26.png)
 
 * 文章页
 ![文章页](static/readmeIM/2018-05-13 22-57-29.png)
