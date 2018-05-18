@@ -46,7 +46,7 @@ ul {
 .site-header-wrapper {
 	position: relative;
 	margin: 0 auto;
-	max-width: 1200px;
+	max-width: 960px;
 	padding: 10px 20px;
 }
 .header-nav {
@@ -109,11 +109,11 @@ ul {
 }
 body {
 	background: #fefefe;
-	height: 2000px;
 }
 .wrapper {
 	margin: 0 auto;
-	max-width: 1200px;
+	max-width: 1000px;
+	margin-bottom: 50px;
 }
 .wrapper .login {
 	position: fixed;

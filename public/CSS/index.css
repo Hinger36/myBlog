@@ -1,7 +1,6 @@
 
 /* 文章 */
 .wrapper .contents {
-	/* height: 300px; */
 	margin-top: 30px;
 	margin: 30px 40px 0;
 	padding: 20px 30px;
@@ -22,7 +21,7 @@
 .article_tag span {
 	float: left;
 	padding: 3px 5px;
-	font-size: 14px;
+	/* font-size: 14px; */
 	background-color: rgba(42, 123, 230, 0.3);
 }
 .article_tag i {
